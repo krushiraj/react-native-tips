@@ -6,24 +6,25 @@ Sometimes we face issues in rendering text in application. I personally faced th
 As all the elements in react are compatible and optimized for Roboto we can use it as default font family with the below hack.
 
 <code>
-export default function enableFontPatch() {
-	const React = require('react');
-	const { Platform, Text } = require('react-native');
 
-	const defaultFontFamily = {
-		...Platform.select({
-			android: { fontFamily: 'Roboto' }
-		})
-	};
+	export default function enableFontPatch() {
+		const React = require('react');
+		const { Platform, Text } = require('react-native');
+		const defaultFontFamily = {
+			...Platform.select({
+				android: { fontFamily: 'Roboto' }
+			})
+		};
 
-	const oldRender = Text.render;
-	Text.render = function(...args) {
-		const origin = oldRender.call(this, ...args);
-		return React.cloneElement(origin, {
-			style: [defaultFontFamily, origin.props.style]
-		});
-	};
-}
+		const oldRender = Text.render;
+		Text.render = function(...args) {
+			const origin = oldRender.call(this, ...args);
+			return React.cloneElement(origin, {
+				style: [defaultFontFamily, origin.props.style]
+			});
+		};
+	}
+	
 </code>
 
 call this function in your app constructor.
