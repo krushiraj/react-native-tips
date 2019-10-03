@@ -1,7 +1,7 @@
-# react-native-tips
+# React-Native-Tips
 Tips for react-native
 
-# tip 1: setting a default family across the application
+# Setting a default family across the application
 Sometimes we face issues in rendering text in application. I personally faced this issue while testing the app on OnePlus(with OnePlus Slate as font) and Oppo devices.
 As all the elements in react are compatible and optimized for Roboto we can use it as default font family with the below hack.
 
